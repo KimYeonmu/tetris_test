@@ -17,6 +17,17 @@ public class bullet : MonoBehaviour
 	    Vector3 pos = transform.position;
 	    pos.x += Speed * Time.deltaTime;
 	    transform.position = pos;
+
+	    int width = Screen.width;
+	    int height = Screen.height;
+
+	    Vector2 screenSize = Camera.main.ScreenToWorldPoint(new Vector3(width, height));
+
+	    if (transform.position.x > screenSize.x || transform.position.x < -screenSize.x ||
+	        transform.position.y > screenSize.y || transform.position.y < -screenSize.y)
+	    {
+            Destroy(gameObject);
+	    }
 	}
 
     void OnTriggerEnter2D(Collider2D collider)

@@ -6,8 +6,11 @@ public class player : MonoBehaviour
 {
     public Transform BulletTransform;
 
+    public GameObject BulletPrefab;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 	    	
 	}
 	
@@ -16,7 +19,8 @@ public class player : MonoBehaviour
 	{
 	    if (Input.GetKeyDown(KeyCode.A))
 	    {
-	        BulletTransform.position = transform.position;
+	        GameObject bulletObj = Instantiate(BulletPrefab);
+	        bulletObj.transform.position = transform.position;
 	    }
 	}
 }
